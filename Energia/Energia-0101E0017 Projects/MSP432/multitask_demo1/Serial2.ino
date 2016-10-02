@@ -50,5 +50,5 @@ void loop2()
     Serial.println(tempf);
     
   
-  delay(500);
+  delay(100);
 }
