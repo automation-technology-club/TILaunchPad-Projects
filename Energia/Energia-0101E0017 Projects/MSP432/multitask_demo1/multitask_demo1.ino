@@ -37,11 +37,18 @@ long duration3, distance3;
  
 // Include application, user and local libraries
 #include "LCD_5110.h"
+#include "dht11.h"
+
+int tempf;
+int tempc;
+int chk;
+int humidity;
 
 // Variables
 LCD_5110 myScreen(CS,CLK,Din,DC,RST,BCKLIT,PUSH2);
 boolean	backlight = false;
-
+dht11 DHT11;
+#define DHT11_PIN 33
 
 void setup()
 {

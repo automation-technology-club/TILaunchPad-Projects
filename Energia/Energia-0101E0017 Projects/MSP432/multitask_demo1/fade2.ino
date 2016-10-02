@@ -9,16 +9,16 @@ void setupFade2()  {
 
 void loopFade2()  { 
   // set the brightness of pin 9:
-  analogWrite(LED, brightness1);    
+  analogWrite(LED, brightness2);    
 
   // change the brightness for next time through the loop:
   brightness2 = brightness2 + fadeAmount2;
 
   // reverse the direction of the fading at the ends of the fade: 
-  if (brightness2 == 0 || brightness2 == 255) {
+  if (brightness2 <= 0 || brightness2 >= 255) {
     fadeAmount2 = -fadeAmount2 ; 
   }     
   // wait for 30 milliseconds to see the dimming effect    
-  delay(100);                            
+  delay(10);                            
 }
 
