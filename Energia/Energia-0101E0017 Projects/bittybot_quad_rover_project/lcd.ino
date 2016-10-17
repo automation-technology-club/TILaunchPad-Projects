@@ -49,7 +49,7 @@ uint8_t k = 0;
 
 
 // Add setup code
-void setup() {
+void lcdsetup() {
     myScreen.begin();
     
     myScreen.setBacklight(backlight);
@@ -62,7 +62,7 @@ void setup() {
 
 
 // Add loop code
-void loop() {
+void lcdloop() {
     if (myScreen.getButton()) {
         backlight = (backlight==0);
         myScreen.setFont(0);
