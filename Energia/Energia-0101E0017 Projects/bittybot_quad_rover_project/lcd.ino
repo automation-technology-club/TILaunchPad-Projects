@@ -11,58 +11,17 @@
 //
 //  Ported to LM4F120 by Bryan Schremp (bajabug@gmail.com) 11/10/2012
 //
-
-
-// Core library - IDE-based
-#if defined(WIRING) // Wiring specific
-#include "Wiring.h"
-#elif defined(MAPLE_IDE) // Maple specific
-#include "WProgram.h"   
-#elif defined(MPIDE) // chipKIT specific
-#include "WProgram.h"
-#elif defined(ENERGIA) // LaunchPad, FraunchPad and StellarPad specific
-#include "Energia.h"
-#elif defined(CORE_TEENSY) // Teensy specific
-#include "WProgram.h"
-#elif defined(ARDUINO) && (ARDUINO >= 100) // Arduino 1.0 and 1.5 specific
-#include "Arduino.h"
-#elif defined(ARDUINO) && (ARDUINO < 100) // Arduino 23 specific
-#include "WProgram.h"
-#else // error
-#error Board not supported
-#endif
-
-#define CS 18
-#define CLK 7
-#define Din 15
-#define DC 17
-#define RST 13
-#define BCKLIT 19
+//Nokia 5110 LCD
  
-// Include application, user and local libraries
-#include "LCD_5110.h"
-
-// Variables
-LCD_5110 myScreen(CS,CLK,Din,DC,RST,BCKLIT,PUSH2);
-boolean	backlight = false;
-uint8_t k = 0;
-
 
 // Add setup code
-void lcdsetup() {
+void setupLCD() {
     myScreen.begin();
-    
-    myScreen.setBacklight(backlight);
-    myScreen.text(0, 0, "Hello!");
-    
-    delay(1000);
-    //  myScreen.clear();
-    myScreen.text(0, 5, "Light off");
 }
 
 
 // Add loop code
-void lcdloop() {
+void loopLCD() {
     if (myScreen.getButton()) {
         backlight = (backlight==0);
         myScreen.setFont(0);
