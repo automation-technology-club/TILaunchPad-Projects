@@ -26,7 +26,7 @@ void loopMotor()
 //then turn to the left apx 90 degrees, and continue forward, continue forever.
 
 isRunning = 1;
-if (ping1 < 30 || ping1 <= 39) {pwmR = pwmR/2; pwmL = pwmL/2;}
+if (ping1 < 30 || ping1 <= 39) {pwmR = pwmR-25; pwmL = pwmL-25;}
 if (ping1 <= 10 || ping1 <=29) {
       stop();
       isRunning = 0;
@@ -35,6 +35,8 @@ if (ping1 <= 10 || ping1 <=29) {
       rotateRightBack(maxspeed, 75);
       rotateLeftForward(maxspeed, 75);
       stop();
+      pwmL = leftSetSpeed;
+      pwmR = rightSetSpeed;
 }
 if (pwmR > maxspeed) {pwmR = maxspeed;}
 if (pwmR < minspeed) {pwmR = minspeed;}
