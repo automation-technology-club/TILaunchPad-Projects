@@ -29,11 +29,11 @@
  
  //setup our master wheel goals, and set speeds, and multiplier
  int countGoal = 40; //a count of 40 would have the wheels rotate 360 degrees (1 full time around)
- int leftSetSpeed = 75; //this will be the speed we start with, it will also be the speed if we change directions
- int rightSetSpeed = 75; //this will be the speed we start with, it will also be the speed if we change directions
+ int leftSetSpeed = 225; //this will be the speed we start with, it will also be the speed if we change directions
+ int rightSetSpeed = 225; //this will be the speed we start with, it will also be the speed if we change directions
  float multipler = .2; //also known as kp (should be small something between 0 and 1
  int maxspeed = 250; //This is the max speed either wheel can go - for this example it's the highest PWM we want to send to the wheels
- int minspeed = 50; //this is the same as above, only it's the slowest we can have the motors go. 
+ int minspeed = 175; //this is the same as above, only it's the slowest we can have the motors go. 
  int isRunning = 0; //this flag will tell the encoder we are moving forward or backward, not that we are turning left or right.
  int pwmL = leftSetSpeed;
  int pwmR = rightSetSpeed;
