@@ -14,24 +14,34 @@
 //moveBackward(speed, length)
 //stop()
 
+
 void setupMotor()   {  
-//delay(1000); //Need delay here for everything to catch up  
- 
+delay(1000); //Need delay here for everything to catch up  
+ stop();
 }
 
 void loopMotor()                     
 {
- // rotateLeft(250, 500);
- // rotateRight(50, 1000);
- // rotateRight(250, 1000);
- // rotateRight(200, 1000);
- // rotateLeft(255, 500);
- // rotateRight(10, 1500);
- //delay (1000);
-}
+//attempt to keep bittybot rover going straight, unless ping sensor says it's too close to an object.
+//then turn to the left apx 90 degrees, and continue forward, continue forever.
 
- //This portion of the code needs to go in a library or be re-written
-//for use with the bitty-quad bot and TI-Launch Pad MSP432
+isRunning = 1;
+if (ping1 < 30 || ping1 <= 39) {pwmR = pwmR/2; pwmL = pwmL/2;}
+if (ping1 <= 10 || ping1 <=29) {
+      stop();
+      isRunning = 0;
+      countl = 0;
+      countr = 0;
+      rotateRightBack(maxspeed, 75);
+      rotateLeftForward(maxspeed, 75);
+      stop();
+}
+if (pwmR > maxspeed) {pwmR = maxspeed;}
+if (pwmR < minspeed) {pwmR = minspeed;}
+rotateRightForward(pwmR, 1);
+rotateLeftForward(pwmL, 1);
+
+}
 
 void rotateLeftBack(int speedOfRotate, int length){
   //rotates Left motor backwards causes robot to move to the right backward

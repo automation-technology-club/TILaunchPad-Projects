@@ -18,6 +18,26 @@
  int leftstate;
  int rightstate;
  
+ /* For our example (and my robot) the left wheel is going to be the master, while the right wheels will be the slave.
+  * what this means, is as we are moving forward or backward, we will compair what the right wheel is doing against the "master" left wheel.
+  * if the right wheel has more encoder counts - it is moving too fast and needs to be slowed down,
+  * if the right wheel has less encoder counts - it is moving too slow and needs to be speed up.
+  *
+  * We will need to be able to adjust the speed on the fly, while also keeping distances so as to not hit a wall or barrier
+  * This will be done in the motor tab
+  */
+ 
+ //setup our master wheel goals, and set speeds, and multiplier
+ int countGoal = 40; //a count of 40 would have the wheels rotate 360 degrees (1 full time around)
+ int leftSetSpeed = 75; //this will be the speed we start with, it will also be the speed if we change directions
+ int rightSetSpeed = 75; //this will be the speed we start with, it will also be the speed if we change directions
+ float multipler = .2; //also known as kp (should be small something between 0 and 1
+ int maxspeed = 250; //This is the max speed either wheel can go - for this example it's the highest PWM we want to send to the wheels
+ int minspeed = 50; //this is the same as above, only it's the slowest we can have the motors go. 
+ int isRunning = 0; //this flag will tell the encoder we are moving forward or backward, not that we are turning left or right.
+ int pwmL = leftSetSpeed;
+ int pwmR = rightSetSpeed;
+
  //Ping Setup
  int ping1;
  int maximumRange = 200;
@@ -27,7 +47,6 @@
  #define triggerPin 31
 
  //Nokia 5110 LCD
- // Core library - IDE-based
 #if defined(WIRING) // Wiring specific
 #include "Wiring.h"
 #elif defined(MAPLE_IDE) // Maple specific
@@ -52,11 +71,9 @@
 #define DC 17
 #define RST 13
 #define BCKLIT 19
- 
-// Include application, user and local libraries
+
 #include "LCD_5110.h"
 
-// Variables
 LCD_5110 myScreen(CS,CLK,Din,DC,RST,BCKLIT,PUSH2);
 boolean	backlight = false;
 uint8_t k = 0;
