@@ -8,8 +8,8 @@ void setupPing1() {
 }
 
 void loopPing1() {
-  int pingavg = 0;
-  for (int avg=0; avg<=50; avg++) {
+  
+  pingcount = pingcount + 1;
   digitalWrite(triggerPin, LOW);
   delayMicroseconds(2);
   digitalWrite(triggerPin, HIGH);
@@ -20,13 +20,16 @@ void loopPing1() {
   //calculate the distance (in cm) based on the speed of sound.
   distance = duration/58.2;
 
-  if (distance >= maximumRange || distance <= minimumRange) {pingavg  = pingavg -1;} else {pingavg = pingavg + distance;}
-  delay(50);
+  if (distance >= maximumRange || distance <= minimumRange) {
+      pingavg  = pingavg;
+      pingcount = pingcount - 1;  } else {
+            pingavg = pingavg + (distance / 2.54); }
   
-  }
-  ping1 = (pingavg / 50);
-  pingavg = 0;
+  
+  ping1 = (pingavg / pingcount);
+  
   Serial.print("Ping: ");
   Serial.println(ping1);
+  delay(50);
 }
 

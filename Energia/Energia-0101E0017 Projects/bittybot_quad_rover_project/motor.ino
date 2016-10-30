@@ -32,9 +32,11 @@ if (ping1 <= 10 || ping1 <=29) {
       isRunning = 0;
       countl = 0;
       countr = 0;
-      rotateRightBack(maxspeed, 75);
-      rotateLeftForward(maxspeed, 75);
+      rotateRightBack(maxspeed, 50);
+      rotateLeftForward(maxspeed, 50);
       stop();
+      pingavg = 0;
+      pingcount = 0;
       pwmL = leftSetSpeed;
       pwmR = rightSetSpeed;
 }

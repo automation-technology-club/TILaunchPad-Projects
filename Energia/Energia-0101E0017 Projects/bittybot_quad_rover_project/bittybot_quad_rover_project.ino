@@ -43,6 +43,8 @@
  int maximumRange = 200;
  int minimumRange = 0;
  long duration, distance;
+ int pingcount = 0;
+ int pingavg;
  #define echoPin 32
  #define triggerPin 31
 
