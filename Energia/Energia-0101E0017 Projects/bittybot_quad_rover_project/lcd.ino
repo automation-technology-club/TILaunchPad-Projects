@@ -22,23 +22,26 @@ void setupLCD() {
 
 // Add loop code
 void loopLCD() {
-    if (myScreen.getButton()) {
-        backlight = (backlight==0);
-        myScreen.setFont(0);
-        myScreen.text(0, 5, backlight ? "Light on " : "Light off");
-        myScreen.setBacklight(backlight);
-    }
-    
-    myScreen.setFont(1);
-    if (k==0)   myScreen.text(0, 2, " MSP430");
-    else if (k==8)   myScreen.text(0, 2, "  LM4F  ");
-    
+    myScreen.clear();
     myScreen.setFont(0);
-    for (uint8_t i=0; i<14; i++) myScreen.text(i, 4, (i==k) ? "*" : " ");
-    k++;
-    k %= 14;
-    
-    delay(200);
+    //myScreen.setBacklight(backlight);
+    myScreen.text(0, 0, "Count: ");
+    String str = String(pingcount);
+    myScreen.text(28, 0, str);
+  
+    str = String(ping1);
+    myScreen.text(0,1, "Avg: ");
+    myScreen.text(5, 1, str);
+        
+    myScreen.text(0, 2, "Left: ");
+    str = String(countl);
+    myScreen.text(28, 2, str);
+                 
+    myScreen.text(0,3, "Right: ");
+    str = String(countr);
+    myScreen.text(28,3, str);
+        
+    delay(100);
 }
 
 
