@@ -18,7 +18,7 @@ if (digitalRead(encoder0PinA) != rightstate) {countr ++; rightstate = !rightstat
     Serial.print(countl);
     Serial.print(" Right: ");
     Serial.println(countr);
-    pwmR = (70+(countl - countr)*multipler); //need to update this for set speed - appears to go fairly straight over a distance, but does start to turn if surface is uneven.
+    pwmR = (pwmL+(countl - countr)*multipler); //Left Motor is being used as Master
     encoderLastMills = encoderCurrentMillis;
     countl = 0;
     countr = 0;
