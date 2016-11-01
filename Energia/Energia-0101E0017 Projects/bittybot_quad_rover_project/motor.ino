@@ -22,8 +22,10 @@
 void setupMotor()   {  
 delay(5000); //Need delay here for everything to catch up  
  stop();
- leftForward(70, 0);
- rightForward(70,0);
+ leftForward(70, 0);// added for testing encoders reason
+ rightForward(70,0);//added for testing encoders reason
+ pwmR = 70;//added for testing encoders
+ pwmL = 70;//added for testing encoders
 }
 
 void loopMotor()                     
@@ -32,6 +34,8 @@ void loopMotor()
 //then turn to the left apx 90 degrees, and continue forward, continue forever.
 
 isRunning = 1;
+leftForward(pwmL, 0);
+rightForward(pwmR, 0);
 /*if (ping1 > 29 && ping1 <= 39) {pwmR = pwmR-25; pwmL = pwmL-25;}
 if (ping1 >= 10 && ping1 <=29) {
       stop();
