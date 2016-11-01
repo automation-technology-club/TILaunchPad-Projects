@@ -12,11 +12,15 @@
 //rotateRightForward(speed, length)
 //moveForward(speed, length)
 //moveBackward(speed, length)
+//rightForward(speed, length)
+//rightBackward(speed, length)
+//leftForward(speed, length)
+//leftBackward(speed, length)
 //stop()
 
 
 void setupMotor()   {  
-delay(1000); //Need delay here for everything to catch up  
+delay(5000); //Need delay here for everything to catch up  
  stop();
 }
 
@@ -26,7 +30,7 @@ void loopMotor()
 //then turn to the left apx 90 degrees, and continue forward, continue forever.
 
 isRunning = 1;
-if (ping1 > 29 && ping1 <= 39) {pwmR = pwmR-25; pwmL = pwmL-25;}
+/*if (ping1 > 29 && ping1 <= 39) {pwmR = pwmR-25; pwmL = pwmL-25;}
 if (ping1 >= 10 && ping1 <=29) {
       stop();
       isRunning = 0;
@@ -44,6 +48,9 @@ if (pwmR > maxspeed) {pwmR = maxspeed;}
 if (pwmR < minspeed) {pwmR = minspeed;}
 rotateRightForward(pwmR, 1);
 rotateLeftForward(pwmL, 1);
+*/
+
+rightForward(50, 1000);
 
 }
 
@@ -97,6 +104,26 @@ void moveBackward(int speedOfRotate, int length) {
   delay(length);
   digitalWrite(leftMotorPin1, LOW);
   digitalWrite(rightMotorPin2, LOW);
+}
+
+void rightForward(int speedOfRotate, int length) {
+  digitalWrite(rightMotorPin2, LOW);
+  analogWrite(rightMotorPin1, speedOfRotate);
+}
+
+void rightBackward(int speedOfRotate, int length) {
+  digitalWrite(rightMotorPin1, LOW);
+  analogWrite(rightMotorPin2, speedOfRotate);
+}
+
+void leftForward(int speedOfRotate, int length) {
+  digitalWrite(leftMotorPin1, LOW);
+  analogWrite(leftMotorPin2, speedOfRotate);
+}
+
+void leftBackward(int speedOfRotate, int length) {
+  digitalWrite(leftMotorPin2, LOW);
+  analogWrtite(leftMotorPin1, speedOfRotate);
 }
 
 void stop() {
