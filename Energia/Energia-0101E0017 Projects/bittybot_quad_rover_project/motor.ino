@@ -123,7 +123,7 @@ void leftForward(int speedOfRotate, int length) {
 
 void leftBackward(int speedOfRotate, int length) {
   digitalWrite(leftMotorPin2, LOW);
-  analogWrtite(leftMotorPin1, speedOfRotate);
+  analogWrite(leftMotorPin1, speedOfRotate);
 }
 
 void stop() {
