@@ -31,8 +31,8 @@ void loopPing1() {
  */
 
   ping1 = (distance /2.54); 
-  Serial.print("Ping: ");
-  Serial.println(ping1);
+  //Serial.print("Ping: ");
+  //Serial.println(ping1);
   delay(50);
 }
 

@@ -22,6 +22,8 @@
 void setupMotor()   {  
 delay(5000); //Need delay here for everything to catch up  
  stop();
+ leftForward(70, 0);
+ rightForward(70,0);
 }
 
 void loopMotor()                     
@@ -50,7 +52,7 @@ rotateRightForward(pwmR, 1);
 rotateLeftForward(pwmL, 1);
 */
 
-leftForward(50, 1000);
+
 
 }
 

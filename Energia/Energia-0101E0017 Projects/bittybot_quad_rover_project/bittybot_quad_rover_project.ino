@@ -14,7 +14,7 @@
  int countl = 0;
  int countr = 0;
  unsigned long encoderLastMills = 0;
- int readtime = 500; //how long to count pulses from encoders
+ int readtime = 1000; //how long to count pulses from encoders
  int leftstate;
  int rightstate;
  int rightStallSpeed = 60;  //Wheels stop moving if PWM is 50 or less - I've added 10 to this vaule for a stall safty margin
