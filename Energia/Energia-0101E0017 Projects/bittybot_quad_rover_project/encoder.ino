@@ -9,23 +9,23 @@
 
  void loopEncoder() { 
 
-unsigned long currentMillis = millis();
+unsigned long encoderCurrentMillis = millis();
 if (digitalRead(encoder0PinA) != leftstate) {countl ++; leftstate = !leftstate; }
 if (digitalRead(encoder0PinB) != rightstate) {countr ++; rightstate = !rightstate;}
    
-   if (currentMillis - lastmills >= readtime && isRunning == 1) {
+   if (encoderCurrentMillis - encoderLastMills >= readtime && isRunning == 1) {
     Serial.print("Left: ");
     Serial.print(countl);
     Serial.print(" Right: ");
     Serial.println(countr);
     pwmR = (countl - countr)*multipler;
-    lastmills = currentMillis;
+    encoderLastMills = encoderCurrentMillis;
     countl = 0;
     countr = 0;
        }
        
     if (isRunning == 0) {
-       lastmills = currentMillis;
+       encoderLastMills = encoderCurrentMillis;
        countl = 0;
        countr = 0;   
     } 

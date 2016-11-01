@@ -50,7 +50,7 @@ rotateRightForward(pwmR, 1);
 rotateLeftForward(pwmL, 1);
 */
 
-rightForward(50, 1000);
+leftForward(50, 1000);
 
 }
 
