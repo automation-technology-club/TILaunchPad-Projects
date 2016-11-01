@@ -9,8 +9,8 @@
  
  //Used for Encoder
  int val; 
- int encoder0PinA = 29; //left encoder
- int encoder0PinB = 30; //right encoder
+ int encoder0PinA = 29; //right encoder
+ int encoder0PinB = 30; //left encoder
  int countl = 0;
  int countr = 0;
  unsigned long encoderLastMills = 0;
