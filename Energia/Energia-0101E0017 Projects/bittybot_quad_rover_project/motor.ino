@@ -36,28 +36,25 @@ void loopMotor()
 isRunning = 1;
 leftForward(pwmL, 0);
 rightForward(pwmR, 0);
-/*if (ping1 > 29 && ping1 <= 39) {pwmR = pwmR-25; pwmL = pwmL-25;}
+//if (ping1 > 29 && ping1 <= 39) {pwmR = pwmR-25; pwmL = pwmL-25;}
 if (ping1 >= 10 && ping1 <=29) {
       stop();
       isRunning = 0;
       countl = 0;
       countr = 0;
-      rotateRightBack(maxspeed, 50);
-      rotateLeftForward(maxspeed, 50);
+      rotateRightBack(200, 75);
+      rotateLeftForward(200, 75);
       stop();
       pingavg = 0;
       pingcount = 0;
-      pwmL = leftSetSpeed;
-      pwmR = rightSetSpeed;
+      pwmL = maxspeed; //leftSetSpeed;
+      pwmR = maxspeed; //rightSetSpeed;
+      delay(1000);
 }
-if (pwmR > maxspeed) {pwmR = maxspeed;}
-if (pwmR < minspeed) {pwmR = minspeed;}
-rotateRightForward(pwmR, 1);
-rotateLeftForward(pwmL, 1);
-*/
-
-
-
+//if (pwmR > maxspeed) {pwmR = maxspeed;}
+//if (pwmR < minspeed) {pwmR = minspeed;}
+//rotateRightForward(pwmR, 1);
+//rotateLeftForward(pwmL, 1);
 }
 
 void rotateLeftBack(int speedOfRotate, int length){
