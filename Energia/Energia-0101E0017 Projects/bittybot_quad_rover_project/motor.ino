@@ -22,10 +22,10 @@
 void setupMotor()   {  
 delay(5000); //Need delay here for everything to catch up  
  stop();
- leftForward(70, 0);// added for testing encoders reason
- rightForward(70,0);//added for testing encoders reason
- pwmR = 70;//added for testing encoders
- pwmL = 70;//added for testing encoders
+ //leftForward(70, 0);// added for testing encoders reason
+ //rightForward(70,0);//added for testing encoders reason
+ pwmR = 125;//70;//added for testing encoders
+ pwmL = 125;//70;//added for testing encoders
 }
 
 void loopMotor()                     
@@ -37,19 +37,19 @@ isRunning = 1;
 leftForward(pwmL, 0);
 rightForward(pwmR, 0);
 //if (ping1 > 29 && ping1 <= 39) {pwmR = pwmR-25; pwmL = pwmL-25;}
-if (ping1 >= 10 && ping1 <=29) {
+if (ping1 <= 10 && ping1 >=0) {
       stop();
       isRunning = 0;
       countl = 0;
       countr = 0;
-      rotateRightBack(200, 75);
-      rotateLeftForward(200, 75);
+      rotateRightBack(200, 300);
+      rotateLeftForward(200, 300);
       stop();
       pingavg = 0;
       pingcount = 0;
       pwmL = maxspeed; //leftSetSpeed;
       pwmR = maxspeed; //rightSetSpeed;
-      delay(1000);
+      delay(500);
 }
 //if (pwmR > maxspeed) {pwmR = maxspeed;}
 //if (pwmR < minspeed) {pwmR = minspeed;}
