@@ -24,31 +24,7 @@ if (digitalRead(encoder0PinA) != rightstate) {countr ++; rightstate = !rightstat
     countr = 0;
        }
        
-    if (countl <=0 && isRunning == 1) {
-              stop();
-              moveBackward(maxspeed, 100);
-              stop();
-              rotateRightBack(200, 200);
-              rotateLeftForward(200, 200);
-              pingavg = 0;
-              pingcount = 0;
-              pwmL = maxspeed; //leftSetSpeed;
-              pwmR = maxspeed; //rightSetSpeed
-              delay(500);
-        }
-        
-if (countr <=0 && isRunning == 1) {
-              stop();
-              moveBackward(maxspeed, 100);
-              stop();
-              rotateRightBack(200, 200);
-              rotateLeftForward(200, 200);
-              pingavg = 0;
-              pingcount = 0;
-              pwmL = maxspeed; //leftSetSpeed;
-              pwmR = maxspeed; //rightSetSpeed
-              delay(500);
-        }        
+    
         
     if (isRunning == 0) {
        encoderLastMills = encoderCurrentMillis;
