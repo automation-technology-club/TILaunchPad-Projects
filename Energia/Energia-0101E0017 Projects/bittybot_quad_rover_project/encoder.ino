@@ -18,6 +18,18 @@ if (digitalRead(encoder0PinA) != rightstate) {countr ++; rightstate = !rightstat
     Serial.print(countl);
     Serial.print(" Right: ");
     Serial.println(countr);
+        if ((countl <=5 || countr <=5) && isRunning == 1) {
+              stop();
+              moveBackward(maxspeed, 100);
+              stop();
+              rotateRightBack(200, 200);
+              rotateLeftForward(200, 200);
+              pingavg = 0;
+              pingcount = 0;
+              pwmL = maxspeed; //leftSetSpeed;
+              pwmR = maxspeed; //rightSetSpeed
+              delay(500);
+        }
     pwmR = (pwmL+(countl - countr)*multipler); //Left Motor is being used as Master
     encoderLastMills = encoderCurrentMillis;
     countl = 0;
