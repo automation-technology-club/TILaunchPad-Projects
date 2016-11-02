@@ -42,14 +42,14 @@ if (ping1 >= 10 && ping1 <=29) {
       isRunning = 0;
       countl = 0;
       countr = 0;
-      rotateRightBack(200, 75);
-      rotateLeftForward(200, 75);
+      rotateRightBack(200, 100);
+      rotateLeftForward(200, 100);
       stop();
       pingavg = 0;
       pingcount = 0;
       pwmL = maxspeed; //leftSetSpeed;
       pwmR = maxspeed; //rightSetSpeed;
-      delay(1000);
+      delay(500);
 }
 //if (pwmR > maxspeed) {pwmR = maxspeed;}
 //if (pwmR < minspeed) {pwmR = minspeed;}
