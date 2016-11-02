@@ -20,15 +20,15 @@ void loopPing1() {
   //calculate the distance (in cm) based on the speed of sound.
   distance = duration/58.2;
 
-  /*if (distance >= maximumRange || distance <= minimumRange) {
+  if (distance >= maximumRange || distance <= minimumRange) {
       pingavg  = 0;
       pingcount = 0;
         } else {
-            pingavg = pingavg + (distance / 2.54); }
+            pingavg = pingavg + (distance); }
  
   
   ping1 = (pingavg / pingcount);
- */
+
 
   ping1 = (distance /2.54); 
   //Serial.print("Ping: ");

@@ -36,7 +36,7 @@
  int leftSetSpeed = leftStallSpeed+30; //Set the starting speed just above the stall speed, well start out slow this can be adjusted
  int rightSetSpeed = rightStallSpeed+30; 
  float multipler = .2; //also known as kp (should be small something between 0 and 1
- int maxspeed = 70; //This is the max speed either wheel can go - for this example it's the highest PWM we want to send to the wheels
+ int maxspeed = 125; //70; //This is the max speed either wheel can go - for this example it's the highest PWM we want to send to the wheels
  //int minspeed = 175; //this is the same as above, only it's the slowest we can have the motors go. 
  int isRunning = 0; //this flag will tell the encoder we are moving forward or backward, not that we are turning left or right.
  int pwmL = leftSetSpeed;
