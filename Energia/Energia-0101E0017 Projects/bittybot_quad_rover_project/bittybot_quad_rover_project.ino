@@ -41,6 +41,7 @@
  int isRunning = 0; //this flag will tell the encoder we are moving forward or backward, not that we are turning left or right.
  int pwmL = leftSetSpeed;
  int pwmR = rightSetSpeed;
+ int isStalled = 0;
 
  //Ping Setup
  int ping1;
