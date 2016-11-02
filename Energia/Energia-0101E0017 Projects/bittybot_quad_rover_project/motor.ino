@@ -42,8 +42,8 @@ if (ping1 <= 10 && ping1 >=0) {
       isRunning = 0;
       countl = 0;
       countr = 0;
-      rotateRightBack(200, 400);
-      rotateLeftForward(200, 400);
+      rotateRightBack(200, 300);
+      rotateLeftForward(200, 300);
       stop();
       pingavg = 0;
       pingcount = 0;
