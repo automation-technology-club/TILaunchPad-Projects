@@ -36,6 +36,12 @@ void loopMotor()
 isRunning = 1;
 leftForward(pwmL, 0);
 rightForward(pwmR, 0);
+
+
+if (isStalled == 1) {
+    isStalled = 0;
+    stalled();
+}
 //if (ping1 > 29 && ping1 <= 39) {pwmR = pwmR-25; pwmL = pwmL-25;}
 if (ping1 <= 10 && ping1 >=0) {
       stop();
@@ -134,4 +140,18 @@ void stop() {
   digitalWrite(leftMotorPin2, LOW);
   digitalWrite(rightMotorPin1, LOW);
   digitalWrite(rightMotorPin2, LOW);
+}
+
+void stalled() {
+  isRunning = 0;            
+              stop();
+              moveBackward(maxspeed, 100);
+              stop();
+              rotateRightBack(200, 200);
+              rotateLeftForward(200, 200);
+              pingavg = 0;
+              pingcount = 0;
+              pwmL = maxspeed; //leftSetSpeed;
+              pwmR = maxspeed; //rightSetSpeed
+              delay(500);
 }
