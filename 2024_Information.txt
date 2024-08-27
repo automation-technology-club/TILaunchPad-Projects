@@ -1,0 +1,69 @@
+TI has discontiuned the MSP432 line of Launchpad, and a lot of the information they had on the launchpad site is gone. Here is what little I learned while trying to get the RSLK robot kit to work.
+
+Energia IDE hasn't been updated in quite awhile either, the current version does still work with Linux Mint 21.3 - (I of course didn't try the Windows or Mac versions).  It doesn't work with Linux Mint 22.
+So moving forward will break it.
+Fortuntally, they did make a board core that is compatiable with Arduino.
+Unfortunally I could only find information about the core from people who made an attempt to preserve it.
+
+This is very good information about the core and how to install it in the Arduino IDE.
+https://github.com/Andy4495/TI_Platform_Cores_For_Arduino
+
+That is only half the battle, Unfortunally the uploader requires python2.7 - which the current version of Linux Mint doesn't provide.
+
+The good news is the creator of the above core pointed me to the TI UNIFLASH tool.
+
+https://www.ti.com/tool/UNIFLASH
+https://github.com/Andy4495/TI_Platform_Cores_For_Arduino/issues/6
+
+This gave me an error while installing, but did work. The only way I got it to work was to export the compiled sketch from the Arduino IDE and upload it using the Uniflash tool.  There is a stand-alone uniflash tool, but I couldn't figure out how to get it to work. 
+
+PlatformIO had the same problem as the Arduino IDE - and needed python2.7 to upload compiled programs.
+Uniflash also worked for it, thou there where a couple of extra steps because the compiled binary is hidden.
+
+NOTES About Energia IDE -
+ONLY the red MSP432 boards are supported, I tried my original black board with it, and bricked the board.
+SO only try it with the new red boards.
+
+NOTES About Uniflash -
+Uniflash supports a lot of different TI boards, but it failed to update my MSP430 boards. 
+It also could not recover the black MSP432 board.
+(I did try to recover the failed updates of the MSP430 using an old version of Energia, no luck)
+SO Be aware, while I haven't had problems with the RED MSP432 board (at least yet), this is far from an ideal setup. And bound to have problems.
+
+I am mostly interested in the RSLK robot, I've included what I have found in the 2024 information directory. 
+
+------
+
+Arduino Libraries?
+
+I attempted to get an I2C 1602 LCD to work, and an I2C OLED - The library for the LCD did compile and everything looked like it might work, but, no luck, I got nothing on the display.
+The I2C OLED library didn't compile at all, and gave too many errors to be helpful.
+
+I tried to find some libraries that might work, but had limited luck.
+I did find this repository with some examples for the MSP432 boards, that might be helpful for something.
+
+This is also where I found the pdf for the MSP432 board.
+
+https://github.com/jminjares4/MSP432-Example-Codes/
+
+These are pure C code, so I'm sure some changes would need to be made for the Arduino IDE, but it is something.
+
+-----
+
+I've added Some of the demo/example code from the RSLK examples included with the MSP432 Core in the Arduino directory.
+
+I looked at the old Energia Code included in this repository, and found a driver for the Nokia 5110 display (I thought I had this working, but I thought I had a Launchpad shield with a Nokia 5110 display on it.) Nope, it was just a loose Nokia 5110.  This display and driver worked, so me trying to advoid using SPI displays - was a failure. And I went with what worked.
+No changes to the code were needed, and I've included the Arduino code in the Arduino directory.
+
+
+----------
+
+Today Aug 26, 2024
+I found a OLED driver that works (more or less) - the big issue I had was sometimes I need to power the board from robot power to get the OLED to work. Sometimes I didn't need to, very strange.
+The robots default I2C port is pin 9 (SCL) and pin 10 (SDA) - I can't figure out if this is a hardware I2C or software I2C. The place where I found this has it listed for the MSP430 board.
+(And I guess on that board pin 9 and 10 are software I2C?)
+https://www.electronicwings.com/ti-launchpad/oled-graphic-display-interfacing-with-msp-exp430g2-ti-launchpad
+The sketch was written for Energia, but it works just fine with Arduino.
+(Note: I had to sign up to download the file, I don't like this tactic and deleted my "account" as soon as I did down it.) 
+A slightly modified very is included in the Arduino directory
+
